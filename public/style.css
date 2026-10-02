@@ -1,0 +1,20 @@
+/* Custom CSS for selection styles */
+.tool-card input:checked + span {
+    border-color: #4f46e5;
+    background-color: #e0e7ff;
+    box-shadow: 0 0 0 2px #4f46e5;
+}
+
+.tool-card {
+    transition: all 0.2s ease-in-out;
+}
+
+.tool-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.dragover {
+    border-color: #4f46e5 !important;
+    background-color: #e0e7ff !important;
+}
