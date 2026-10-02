@@ -20,13 +20,6 @@ OUTPUT_DIR = "/tmp/outputs"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-# Conversion functions
-def pdf_to_word(input_path, output_path):
-    from pdf2docx import Converter
-    cv = Converter(input_path)
-    cv.convert(output_path, start=0, end=None)
-    cv.close()
-
 def stub_conversion(input_path, output_path, msg="Conversion supported soon"):
     with open(output_path, "w") as f:
         f.write(f"This is a placeholder. {msg}")
@@ -43,7 +36,7 @@ async def convert_file(file: UploadFile = File(...), conversion_type: str = Form
         
         if conversion_type == "pdf-to-word":
             output_path = os.path.join(OUTPUT_DIR, output_filename + ".docx")
-            pdf_to_word(input_path, output_path)
+            stub_conversion(input_path, output_path, "PDF to Word is temporarily disabled on Vercel to prevent crashes.")
         elif conversion_type == "pdf-to-excel":
             output_path = os.path.join(OUTPUT_DIR, output_filename + ".xlsx")
             stub_conversion(input_path, output_path, "PDF to Excel is temporarily disabled due to Vercel memory limits.")
